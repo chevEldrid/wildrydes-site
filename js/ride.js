@@ -15,7 +15,7 @@ WildRydes.map = WildRydes.map || {};
         alert(error);
         window.location.href = '/signin.html';
     });
-    function requestUnicorn(pickupLocation) {
+    function requestUnicorn() {
         $.ajax({
             method: 'POST',
             url: _config.api.invokeUrl + '/ride',
@@ -24,8 +24,8 @@ WildRydes.map = WildRydes.map || {};
             },
             data: JSON.stringify({
                 PickupLocation: {
-                    Latitude: pickupLocation.latitude,
-                    Longitude: pickupLocation.longitude
+                    Latitude: 47.6174755835663,
+                    Longitude: -122.28837066650185
                 }
             }),
             contentType: 'application/json',
@@ -77,9 +77,8 @@ WildRydes.map = WildRydes.map || {};
     }
 
     function handleRequestClick(event) {
-        var pickupLocation = WildRydes.map.selectedPoint;
         event.preventDefault();
-        requestUnicorn(pickupLocation);
+        requestUnicorn();
     }
 
     function animateArrival(callback) {
